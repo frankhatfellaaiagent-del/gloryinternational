@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7f9;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+
+  --brand: #1d4ed8;
+  --brand-strong: #1e3a8a;
+  --brand-soft: #eff4ff;
+
+  --status-on-track: #059669;
+  --status-on-track-bg: #ecfdf5;
+  --status-on-track-border: #a7f3d0;
+
+  --status-due-soon: #b45309;
+  --status-due-soon-bg: #fffbeb;
+  --status-due-soon-border: #fde68a;
+
+  --status-overdue: #dc2626;
+  --status-overdue-bg: #fef2f2;
+  --status-overdue-border: #fecaca;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+
+  --color-status-on-track: var(--status-on-track);
+  --color-status-on-track-bg: var(--status-on-track-bg);
+  --color-status-on-track-border: var(--status-on-track-border);
+
+  --color-status-due-soon: var(--status-due-soon);
+  --color-status-due-soon-bg: var(--status-due-soon-bg);
+  --color-status-due-soon-border: var(--status-due-soon-border);
+
+  --color-status-overdue: var(--status-overdue);
+  --color-status-overdue-bg: var(--status-overdue-bg);
+  --color-status-overdue-border: var(--status-overdue-border);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Comfortable minimum touch target for the agent/vendor tapping on a phone. */
+.tap-target {
+  min-height: 44px;
+}

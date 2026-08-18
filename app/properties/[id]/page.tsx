@@ -25,6 +25,7 @@ const OCCUPANCY_LABEL: Record<Property["occupancyStatus"], string> = {
   occupied: "Occupied",
   cash_for_keys: "Cash-for-keys",
   eviction: "Eviction",
+  unknown: "Not set",
 };
 
 export default function PropertyDetailPage() {
@@ -75,16 +76,20 @@ function PropertyDetail() {
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Fact label="Lender" value={lenderName(data, property.lenderId)} />
         <Fact label="Occupancy" value={OCCUPANCY_LABEL[property.occupancyStatus]} />
-        <Fact label="List price" value={formatMoney(property.listPrice)} />
+        <Fact label="List price" value={property.listPrice > 0 ? formatMoney(property.listPrice) : "—"} />
         <Fact label="Open tasks" value={String(tasks.filter((t) => t.status !== "done").length)} />
       </div>
 
       <Section title="Task checklist">
-        <ul className="space-y-2">
-          {tasks.map((t) => (
-            <TaskChecklistItem key={t.id} task={t} vendorName={vendorName(data, t.assignedVendorId)} />
-          ))}
-        </ul>
+        {tasks.length === 0 ? (
+          <EmptyRow>No tasks yet.</EmptyRow>
+        ) : (
+          <ul className="space-y-2">
+            {tasks.map((t) => (
+              <TaskChecklistItem key={t.id} task={t} vendorName={vendorName(data, t.assignedVendorId)} />
+            ))}
+          </ul>
+        )}
       </Section>
 
       <Section title="Vendors on this property">
@@ -143,18 +148,22 @@ function PropertyDetail() {
       )}
 
       <Section title="Documents">
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {documents.map((d) => (
-            <li
-              key={d.id}
-              className="flex items-center gap-2 rounded-lg border border-border bg-surface p-3 text-sm text-foreground"
-            >
-              <span aria-hidden>📄</span>
-              <span className="truncate">{d.name}</span>
-              <span className="ml-auto shrink-0 text-xs text-muted">{d.kind}</span>
-            </li>
-          ))}
-        </ul>
+        {documents.length === 0 ? (
+          <EmptyRow>No documents uploaded yet.</EmptyRow>
+        ) : (
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {documents.map((d) => (
+              <li
+                key={d.id}
+                className="flex items-center gap-2 rounded-lg border border-border bg-surface p-3 text-sm text-foreground"
+              >
+                <span aria-hidden>📄</span>
+                <span className="truncate">{d.name}</span>
+                <span className="ml-auto shrink-0 text-xs text-muted">{d.kind}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </Section>
 
       <Section title="Activity timeline">

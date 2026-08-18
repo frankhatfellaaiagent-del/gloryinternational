@@ -12,6 +12,7 @@ const OCCUPANCY_LABEL: Record<Property["occupancyStatus"], string> = {
   occupied: "Occupied",
   cash_for_keys: "Cash-for-keys",
   eviction: "Eviction",
+  unknown: "Not set",
 };
 
 export function PropertyCard({ property }: { property: Property }) {

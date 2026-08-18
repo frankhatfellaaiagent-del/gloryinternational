@@ -42,7 +42,7 @@ const STANDARD_CHECKLIST: { title: string; category: "valuation" | "occupancy" |
 ];
 
 export function DataProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<DemoData>(() => generateSeedData(new Date()));
+  const [data, setData] = useState<DemoData>(() => generateSeedData());
   const hydrated = useRef(false);
 
   useEffect(() => {
@@ -177,7 +177,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   }
 
   function resetDemoData() {
-    const fresh = generateSeedData(new Date());
+    const fresh = generateSeedData();
     setData(fresh);
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
   }

@@ -6,6 +6,7 @@ import { useData } from "@/lib/data-context";
 import type { Property } from "@/lib/types";
 
 const OCCUPANCY_OPTIONS: { value: Property["occupancyStatus"]; label: string }[] = [
+  { value: "unknown", label: "Not set" },
   { value: "vacant", label: "Vacant" },
   { value: "occupied", label: "Occupied" },
   { value: "cash_for_keys", label: "Cash-for-keys" },

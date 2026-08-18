@@ -87,7 +87,7 @@ export interface Property {
   state: string;
   zip: string;
   lenderId: string;
-  occupancyStatus: "vacant" | "occupied" | "cash_for_keys" | "eviction";
+  occupancyStatus: "vacant" | "occupied" | "cash_for_keys" | "eviction" | "unknown";
   listPrice: number;
   archivedAt: string | null;
   photoTag: string;

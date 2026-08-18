@@ -4,7 +4,10 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import { generateSeedData } from "./data";
 import type { DemoData, Expense, ExpenseStatus, Property, TaskStatus } from "./types";
 
-const STORAGE_KEY = "reo-command-center-data-v1";
+// Bumped when the seed data itself changes (e.g. swapping in a real
+// portfolio) so browsers with an old cached copy in localStorage pick up
+// the new seed automatically instead of showing stale data forever.
+const STORAGE_KEY = "reo-command-center-data-v2";
 
 interface NewPropertyInput {
   address: string;
